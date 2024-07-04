@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<form th:action="@{/zasekiyoyaku}" method="POST">
+<p>ログインはこちら</p>
+<input type="text" name="ID">
+<input type="text" name="PW">
+<br>
+<input  type="submit" name="bta1" value="ログイン">
+	</form>
+
+	<th:block th:if="${zf=='ok'}">
+		<script type="text/javascript" src="js/yoyaku.js"></script>
+	</th:block>
+	<form th:action="@{/zasekiyoyaku}" method="POST" onsubmit="return validateForm()">
+		<h1>操作を入力してください</h1>
+		<input type="text" name="ac1">
+		<input type="submit" name="bt1" value="確定">
+	</form>
+
+	<th:block th:if="${session.ac101== '予約'}">
+		<form th:action="@{/zasekiyoyaku}" method="POST">
+			<h1>予約したい座席番号を1~10で入力してください</h1>
+			<h4>予約</h4>
+			<input type="text" name="ac2">
+			<select name="scr1">
+				<option value="1月">1月</option>
+				<option value="2月">2月</option>
+				<option value="3月">3月</option>
+				<option value="4月">4月</option>
+				<option value="5月">5月</option>
+				<option value="6月">6月</option>
+				<option value="7月">7月</option>
+				<option value="8月">8月</option>
+				<option value="9月">9月</option>
+				<option value="10月">10月</option>
+				<option value="11月">11月</option>
+				<option value="12月">12月</option>
+			</select>
+			<input type="submit" name="bt2" value="確定">
+		</form>
+	</th:block>
+
+
+	<th:block th:if="${session.ac101== '参照'}">
+		<h1>現在の予約状況</h1>
+		<ul>
+			<li th:each="listitem : ${session.list}">
+				<p id="ani" th:text="${listitem}"></p>
+			</li>
+		</ul>
+	</th:block>
+
+	<th:block th:if="${session.ac101== 'まとめて予約'}">
+		<form th:action="@{/zasekiyoyaku}" method="POST">
+			<h1>予約したい番号を２つ入力してください</h1>
+			<h2>予約したい座席番号を1~10で入力してください</h2>
+
+			<input type="text" name="ac3f1">
+			<input type="text" name="ac3f2">
+			<input type="submit" name="bt3" value="確定">
+		</form>
+	</th:block>
+	<th:block th:if="${session.ac101== '取消'}">
+		<form th:action="@{/zasekiyoyaku}" method="POST">
+			<h1>取り消したい番号を入力してください</h1>
+			<input type="text" name="ac4">
+			<input type="submit" name="bt4" value="確定">
+		</form>
+	</th:block>
+
+<th:block th:if="${session.ac101== '検索'}">
+	<ul>
+			<li th:each="listitem : ${session.list}">
+				<p th:text="${listitem}"></p>
+			</li>
+		</ul>
+</th:block>
+<script type="text/javascript" src="js/yoyaku1.js"></script>
+</body>
+
+</html>

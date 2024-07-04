@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>プログラム用語追加</title>
+</head>
+<th:block th:if="${out=='good'}">
+	<script type="text/javascript" src="js/yoyaku2good.js"></script>
+</th:block>
+
+<body>
+	<h1>プログラム用語追加</h1>
+	<th:block th:if="${out=='out'}">
+		<script type="text/javascript" src="js/yoyaku.js"></script>
+	</th:block>
+	<a href="/yougo">検索</a>　<a href="/dbprtouroku">登録</a>　
+	<h5>データ追加</h5>
+	<p>ここで入力してね</p>
+	<form th:action="@{/dbprtouroku}" method="POST">
+		<select name="prog">
+			<option value="Java">Java</option>
+			<option value="HTML">HTML</option>
+			<option value="CSS">CSS</option>
+			<option value="HTML">PHP</option>
+			<option value="SQL">SQL</option>
+			<option value="JavaScript">JavaScript</option>
+			<option value="C">C</option>
+			<option value="VisualBasic">VisualBasic</option>
+			<option value="その他">その他</option>
+		</select>
+		<input type "text" name="code" placeholder="コード名">
+		<input type "text" name="prtext" placeholder="説明">
+		<input type="submit"value="確定">
+	</form>
+	
+	<th:block th:if="${ins=='ok'}">
+		<table>
+			<th>
+				ID
+			</th>
+	<th>プログラム言語</th>
+			<th>ソースコード</th>
+			<th>説明</th>
+		</tr>
+		<tr th:each="newcodecp:${newcode}">
+			<td><p th:text=${newcodecp.id}>
+
+				</p></td>
+			<td>
+				<p th:text=${newcodecp.progname}>
+
+				</p>
+
+			</td>
+
+			<td>
+
+				<p th:text=${newcodecp.progtext}>
+
+				</p>
+			</td>
+
+			<td>
+				<p th:text=${newcodecp.eltext}>
+
+				</p>
+			</td>
+	</table>
+	<p th:text="${kekkallnot}"></p>
+	</th:block>
+<h5>更新情報</h5>
+
+	<p><a href="#top" id="topback">トップへ戻る</a></p>
+</body>
+
+</html>

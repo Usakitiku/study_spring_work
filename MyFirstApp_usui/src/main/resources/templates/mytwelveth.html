@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<p th:text="${modelPra1}"></p> 
+	<ul>
+	<li th:each="nu:${resultList}">
+    <p th:text="${nu}"></p>
+		</li>
+		</ul>
+	<h4>第12回 とにかく復習が大事です。</h4>
+	<h4>A1問題</h4>
+	
+	<h4>A2問題</h4>
+	
+	<hr>
+	<h4>B1問題</h4>
+		<form th:action="@{/twelvethpage}" method="POST">
+			<input type="text" name="text">
+			<input type="submit" value="送信">
+		</form>
+		
+	<h4>B2問題</h4>
+	<hr>
+	<h4>↓個別練習問題↓</h4>
+</body>
+</html>

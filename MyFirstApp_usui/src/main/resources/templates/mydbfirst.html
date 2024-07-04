@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<form method="GET" action="mydbfirstpra">
+		<input type="text" name="mozi">
+		<input type="submit" name="sub">
+	</form>
+	<h4>DB連携！</h4>
+
+	<h5>検索結果一覧</h5>
+	<ul>
+		<li th:each="singledata : ${kensakukekka}">
+			<p th:text="${singledata.name}"></p>
+		</li>
+	</ul>
+
+	<hr>
+	<h5>練習問題</h5>
+
+	<!--↓文法のテンプレです。答えではないよ -->
+	<ul>
+		<li th:each="singledata : ${kensakukekka}">
+			<p th:text="${singledata.hobby+singledata.name}"></p>
+		</li>
+	</ul>
+
+	<h5>応用問題</h5>
+	<table>
+		<tr>
+			<th>商品名</th>
+			<th>価格</th>
+			<th>カテゴリ</th>
+		</tr>
+		<tr th:each="asingledata : ${kensakupra}">
+			<td th:text="${asingledata.title}"></td>
+			<td th:text="${asingledata.price}"></td>
+			<td th:text="${asingledata.category}"></td>
+		</tr>
+	</table>
+</body>
+
+</html>

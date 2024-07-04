@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<p><b>ユーザ名</b><nobr th:text="${rankname}"></nobr></p>
+<p><b>予約回数</b><nobr th:text="${rankdata}"></nobr></p>
+<p><b>ユーザランク</b><nobr th:text="${rank}"></nobr></p>
+<table>
+		<tr>
+			
+			
+			<th>座席予約履歴</th>
+			
+		</tr>
+
+		<tr th:each="singledata:${kensakukekka}">
+			
+			<td>
+				<p th:text="${singledata.yoyakubango}"></p>
+			</td>
+			
+		</tr>
+
+	</table>
+
+		
+</body>
+</html>

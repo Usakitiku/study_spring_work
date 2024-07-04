@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<img src="https://th.bing.com/th/id/R.13c90c907700d0e5940d1965209e45c2?rik=3bOVul%2fq60aN1w&riu=http%3a%2f%2fwww.monster-strike.com%2fogp.png%3fupdate%3d20210715120407&ehk=9ezf8h9OOkDOlWAeUIgIPzAE0nrcbUrHOwvX2C6hTIc%3d&risl=&pid=ImgRaw&r=0" alt="説明文">
+<h1>モンストキャラデータ</h1>
+<form th:action="@{/monsuto1}" method="POST" >
+	<input type="text" name="kensaku">
+	<input type="submit">
+	</form>
+
+		
+		
+		<ul th:each="singledata:${kensakupra}">
+			
+				<li th:text=${singledata.name}></li>
+			
+			
+				<li th:text=${singledata.name}></li>
+			
+		
+</ul>
+
+
+</body>
+</html>

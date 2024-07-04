@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>プログラミング用語一覧</title>
+
+</head>
+<link rel="stylesheet" type="text/css" href="css/yougoc.css">
+
+<body>
+	<h1>プログラム用語一覧</h1>
+	<details>
+		<summary>これは何? </summary>
+		<p>
+			いろいろなプログラム用語を調べたりできるよ<br>
+			調べる、追加する、削除することができるよ<br>
+			ちなみに様々な機能を搭載してるから探して見てね
+		<details>
+			<summary>もっと詳しく</summary>
+			<p>現在検索可能プログラムは、java,PHP,HTML&CSS,SQLです。<br>
+				ここではプログラム言語やコードから検索する事が出来る。<br>
+				また、追加編集と、削除機能があります。
+			<details>
+				<summary>待って、様々な機能ってなんなの？</summary>
+				<p>内緒にしている機能もありますが、一つ紹介。<br>
+					プログラム言語検索で、何かをすると特別な機能が使えます。
+				<details>
+					<summary>内緒にしないで一つくらい教えてよ</summary>
+					<p>仕方ないですね、【Work,more,efficiently】と入れてみると便利ですよ…(・ω・)ノ
+					</p>
+				</details>
+				</p>
+			</details>
+			</p>
+		</details>
+		</p>
+
+	</details>
+	<a href="/yougo">検索</a>　　<a href="/dbprtouroku">登録</a>　
+
+
+
+
+	<th:block th:if="${session.tc=='n'}">
+		<h5>検索</h5>
+		<p>ここで入力してね</p>
+		<form th:action="@{/yougo}" method="POST">
+			<input type="text" name="prog" placeholder="プログラム言語">
+			<input type "text" name="code" placeholder="コード名">
+			<input type="submit" value="検索">
+		</form>
+	</th:block>
+
+
+	<th:block th:if="${session.tc=='ex'}">
+		<h5>ID検索</h5>
+		<p>ここで入力してね</p>
+		<form th:action="@{/yougo}" method="POST">
+			<input type="text" name="id" placeholder="ID">
+			<input type="submit" value="検索">
+		</form>
+	</th:block>　
+
+
+	<th:block th:if="${session.tc=='ri'}">
+		<table>
+			<tr>
+				<th>過去の言語</th>
+				<th>過去のコード名</th>
+			</tr>
+			<tr th:each="aa,bb:${kensakurireki}">
+				<td th:each="item : ${aa[0]}">
+					<p th:text="${item}"></p>
+
+				</td>
+				<td th:each="item2 : ${aa[1]}">
+					<p th:text="${item2}"></p>
+				</td>
+			</tr>
+		</table>
+	</th:block>
+
+
+	<a href="/yougokaihatu">検索機能切り替え</a>　　<a href="/yougokaihatu2">全検索</a>　　<a href="/yoyakurireki">履歴</a>
+	<th:block th:if="${kensakuh=='ok'}">
+		<p>検索結果<nobr th:text="${kensuu}"></nobr>件</p>
+		<table>
+			<tr>
+				<th>プログラム言語</th>
+				<th>ソースコード</th>
+				<th>説明</th>
+			</tr>
+			<tr th:each="kensakudb1:${kensakupra}">
+				<td>
+					<p th:text=${kensakudb1.progname}>
+
+					</p>
+
+				</td>
+
+				<td>
+
+					<p th:text=${kensakudb1.progtext}>
+
+					</p>
+				</td>
+
+				<td>
+					<p th:text=${kensakudb1.eltext}>
+
+					</p>
+				</td>
+		</table></th:block>
+		<p th:text="${kekkallnot}"></p>
+		
+		
+	<!--	thの内容（多重配列）イメージ-->	
+		<table>
+
+		<tr th:each="naiyou,bazyon : ${session.kousinrireki}">
+        <td th:each="cell : ${naiyou[0]}" th:text="${cell}"></td>
+        <td th:each="cell2 : ${naiyou[1]}" th:text="${cell2}"></td>
+    </tr>
+    </table>
+    
+    
+		<p><a href="#top" id="topback">トップへ戻る</a></p>
+</body>
+
+</html>

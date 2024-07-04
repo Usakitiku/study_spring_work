@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+		<link rel="stylesheet" type="text/css"href="/css/iro.css" />
+
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<form th:action="@{/userLogin}" method="POST">
+
+		ID<input type="text" name="LoginId"><br>
+		パスワード<input type="text" name="LoginName"><br>
+		<input type="submit" value="ログイン">
+		
+	</form>
+	<p th:text="${sousin01}"></p>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>検索</title>
+</head>
+
+<body><th:block th:if="${session.tc=='no'}">
+	<form th:action="@{/sheetpass}" method="POST">
+		<p>予約者名</p> 
+		<p>ID</p><input type="text" name="id">
+		<p>パスワード</p> <input type="text" name="pass">
+		<input type="submit">
+	</form></th:block>
+	
+	
+	
+	
+<th:block th:if="${session.tc=='ok'}">
+	<h3>第3回制作課題</h3>
+	<a href="/reservmodify">更新</a>　　　<a href="/sheetreserv">検索</a>　<a href="/sheetrank">ランク</a>  <a href="/sheetranking">ランキング</a>
+	<h4>あいまい検索</h4>
+	<form th:action="@{/sheetSer}" method="POST" onsubmit="return validateForm()">
+		<p>予約者名</p> <input type="text" name="mei">
+		<input type="submit">
+	</form>
+	
+	<h4>＜予約情報を入力してください＞</h4>
+	<form th:action="@{/sheetIns}" method="POST" onsubmit="return validateForm()">
+
+		<p>予約番号</p><input type="text" name="ban">
+		<p>予約日</p><input type="text" name="bi">
+		<p>予約者名</p> <input type="text" name="mei">
+		<input type="submit">
+	</form>
+	<hr>
+	<h4>＜予約一覧＞</h4>
+	<table>
+		<tr>
+			<th>予約番号</th>
+			<th>予約日</th>
+			<th>予約者名</th>
+		</tr>
+
+		<tr th:each="singledata:${kensakupra}">
+			<td>
+				<p th:text=${singledata.yoyakubango}></p>
+			</td>
+			<td>
+				<p th:text=${singledata.yoyakubi}></p>
+			</td>
+			<td>
+				<p th:text=${singledata.yoyakuname}></p>
+			</td>
+		</tr>
+
+	</table>
+</th:block>
+</body>
+
+</html>

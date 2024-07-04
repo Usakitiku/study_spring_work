@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<p>登録</p>
+	<form th:action="@{/Insdda}" method="POST">
+		日<input type="text" name="bi">
+		クラス<input type="text" name="clas">
+		名前<input type="text" name="name">
+		コート<input type="text" name="coat">
+		<input type="submit">
+	</form>
+
+	<p>更新</p>
+	<form th:action="@{/henkou1}" method="POST">
+		日<input type="text" name="bi">
+		名前<input type="text" name="name">
+		日<input type="text" name="bi2">
+		<input type="submit">
+	</form>
+	<p>削除</p>
+	<form th:action="@{/del}" method="POST">
+		日<input type="text" name="bi">
+		名前<input type="text" name="name">
+		<input type="submit">
+	</form>
+	<th:block th:if="${out=='out'}">
+		<script type="text/javascript" src="js/dome.js"></script>
+	</th:block>
+
+	<table>
+		<tr>
+			<th>日</th>
+			<th>クラス</th>
+			<th>名前</th>
+			<th>コート</th>
+		</tr>
+		<tr th:each="kensaku1:${kensaku}">
+			<td>
+				<p th:text=${kensaku1.yoyakubi}></p>
+			</td>
+			<td>
+				<p th:text=${kensaku1.yoyakuclass}></p>
+			</td>
+			<td>
+				<p th:text=${kensaku1.yoyakuname}></p>
+			</td>
+			<td>
+				<p th:text=${kensaku1.yoyakucoat}></p>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>
